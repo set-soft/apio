@@ -31,7 +31,7 @@ To get an example, use the command:
 class Examples(object):
 
     def __init__(self):
-        self.examples_dir = join(util.get_home_dir(), 'packages', 'examples')
+        self.examples_dir = util.get_package_dir('examples')
 
     def list_examples(self):
         if isdir(self.examples_dir):
@@ -55,9 +55,7 @@ class Examples(object):
             click.secho(EXAMPLE_DIR_FILE, fg='green')
             click.secho(EXAMPLE_OF_USE_CAD, fg='green')
         else:
-            click.secho('Error: examples are not installed', fg='red')
-            click.secho('Please run:\n'
-                        '   apio install examples', fg='yellow')
+            util._check_package('examples')
             return 1
         return 0
 
